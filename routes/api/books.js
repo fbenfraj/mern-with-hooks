@@ -37,6 +37,8 @@ router.get('/:id', (req, res) => {
 // @description add/save book
 // @access Public
 router.post('/', (req, res) => {
+    console.log('post /');
+    console.log(req.body)
     Book.create(req.body)
         .then(book => res.json({
             msg: 'Book added successfully'
