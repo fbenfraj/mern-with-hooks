@@ -52,6 +52,7 @@ router.post('/', (req, res) => {
 // @description Update book
 // @access Public
 router.put('/:id', (req, res) => {
+    console.log('put /');
     Book.findByIdAndUpdate(req.params.id, req.body)
         .then(book => res.json({
             msg: 'Updated successfully'

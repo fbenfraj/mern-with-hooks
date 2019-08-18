@@ -4,8 +4,8 @@ import "../App.css";
 
 import useForm from "../hooks/useForm";
 
-function CreateBook() {
-  const { values, handleChange, handleSubmit } = useForm();
+function CreateBook(props) {
+  const { values, handleChange, handleSubmit } = useForm(props);
 
   return (
     <>

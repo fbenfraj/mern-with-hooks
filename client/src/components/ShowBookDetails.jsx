@@ -20,6 +20,10 @@ function ShowBookDetails(props) {
     };
   }, [props.match.params.id]);
 
+  function onUpdateClick() {
+    props.history.push('/');
+  }
+
   function onDeleteClick(id) {
       console.log('id: ' + id);
     axios
@@ -115,6 +119,7 @@ function ShowBookDetails(props) {
             <Link
               to={`/edit-book/${book._id}`}
               className="btn btn-outline-info btn-lg btn-block"
+              onClick={() => onUpdateClick()}
             >
               Edit Book
             </Link>
