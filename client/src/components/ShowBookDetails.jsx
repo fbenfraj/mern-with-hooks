@@ -21,12 +21,12 @@ function ShowBookDetails(props) {
   }, [props.match.params.id]);
 
   function onDeleteClick(id) {
-      console.log(id);
+      console.log('id: ' + id);
     axios
       .delete("http://localhost:8082/api/books/" + id)
       .then(res => {
-        // this.props.history.push("/");
-        console.log('deleted');
+        props.history.push("/");
+        console.log('Book ' + book.title + ' deleted');
       })
       .catch(err => {
         console.log("Error form ShowBookDetails_deleteClick" + err);
@@ -104,7 +104,7 @@ function ShowBookDetails(props) {
             <button
               type="button"
               className="btn btn-outline-danger btn-lg btn-block"
-              onClick={onDeleteClick}
+              onClick={() => onDeleteClick(book._id)}
             >
               Delete Book
             </button>
