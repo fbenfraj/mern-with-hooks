@@ -6,7 +6,7 @@ import BookCard from "./BookCard";
 
 function ShowBookList() {
   const [books, setBooks] = useState([]);
-
+  
   useEffect(() => {
     axios
       .get("http://localhost:8082/api/books")
@@ -14,11 +14,14 @@ function ShowBookList() {
         setBooks(res.data);
       })
       .catch(err => {
-        console.log("Error from ShowBookList");
+        console.log("Error from ShowBookList" + err);
       });
-  });
+    return function cleanup() {
+      setBooks([]);
+    };
+  }, []);
 
-  console.log("PrintBook: " + books);
+  // console.log("PrintBook: " + books);
   let bookList;
   if (!books) {
     bookList = "There is no book record!";
